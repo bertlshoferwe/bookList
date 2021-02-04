@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import data from './data/data';
+import MaterialIcon from 'material-icons-react';
 import BookCover from './components/bookCover';
 import CartList from './components/cartList';
 
@@ -59,20 +60,47 @@ class App extends Component {
 
   render() {
 
-    const clearShelf = ( this.state.cart.length > 0 )? <button onClick={ this.clearCart } > Clear Shelf </button> : <div/>;
+    const clearShelf = ( this.state.cart.length > 0 )? <button onClick={ this.clearCart } > Clear Shelf </button> : <div> Looks like you forgot something, quick add something to your book shelf</div>;
 
     return (
       <div className='contentWrapper'>
-        <div className='title'>
-          <h1>Bookist</h1>
+
+        <div className='nav'>
+
+          <div className='logo'>
+            <span className='book material-icons'>
+              book
+            </span>
+            <div className='wordLogo'> BookList </div>
+          </div>
+          <a className='navIcon'>
+            <span className='icon material-icons'>
+              home
+            </span>
+            <div> Home </div>
+          </a>
+          <a className='navIcon'>
+            <span className='icon material-icons'>
+              shopping_cart
+            </span>
+            <div> Cart </div>
+          </a>
+
         </div>
+
         <div className='content'>
 
           <div className='search'>
 
-            <input name="firstName" onChange={ (e) => {this.handleChange(e); } } value={this.state.searched} />
+            <div className='inputWrapper'>
 
-            <button onClick={ this.clearSearched } > Clear Search </button>
+              <input name="search" onChange={ (e) => {this.handleChange(e); } } value={this.state.searched} className='searchInput' placeholder='Find a book' />
+
+              {/* only display x if charters exist in input */}
+
+              { (this.state.searched)? <a onClick={ this.clearSearched } className='searchButton' > X </a> : <div></div> }
+
+            </div>
 
           </div>
 
@@ -80,7 +108,7 @@ class App extends Component {
 
             <BookCover data={ this.state.data } query={this.state.searched} addToCart={ this.addToCart } />
 
-            <div className='cart'>
+            {/* <div className='cart'>
 
               <h2> Your Shelf</h2>
 
@@ -88,7 +116,7 @@ class App extends Component {
 
               <CartList data={ this.state.cart } />
 
-            </div>
+            </div> */}
 
           </div>
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../App.scss';
 
 class CartList extends Component {
   constructor() {
@@ -11,7 +11,7 @@ class CartList extends Component {
     const { data } = this.props;
 
 
-    let cart = data.map( ( data ) => 
+    let cart = data.map( ( data ) =>
 
       <div key={ data.id } >
         <p className='coverTitle '>{ data.title }</p>
