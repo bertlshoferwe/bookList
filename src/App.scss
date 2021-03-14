@@ -1,3 +1,10 @@
+// css reset
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 @mixin for-phone-only-portrait {
   @media (max-width: 599px) { @content; }
 }
@@ -44,6 +51,8 @@ $Red: #FB5D48;
   justify-content: flex-start;
   align-items: center;
   background-color:$blue;
+z-index: 5;
+top: 10vh;
 }
 .logo{
   position: relative;
@@ -55,7 +64,7 @@ $Red: #FB5D48;
 }
 .book{
   color: $orange;
-  font-size: 60px !important;
+  font-size: 8vw !important;
 }
 .wordLogo{
   position:absolute;
@@ -135,6 +144,7 @@ $Red: #FB5D48;
   display: none;
 }
 .cover{
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -148,11 +158,47 @@ $Red: #FB5D48;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   }
 }
-.coverTitle{
+.viewMore{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  font-size: 25px;
+  transition: 0.45s;
+  &:hover{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($blue, 0.8 );
+    color: whitesmoke;
+  }
+}
+.coverImageWrapper:hover .viewMore {
+    display: flex;
+}
+
+.addToCart{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  height:40px;
+  width: 40px;
+  padding: 3px;
+  font-size: 1vw;
+  border-radius: 50%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: $Red;
+  color: whitesmoke;
+  transition: 0.7s;
+  &:hover{
+    border-radius: 18px;
+    background-color: $blue;
+  }
 }
 
 
@@ -163,7 +209,7 @@ $Red: #FB5D48;
 .nav{
   left: 10px;
   width: 10vw;
-  height: 70vh;
+  height: 35vh;
   padding: 10px;
   border-radius: 20px;
 }
@@ -173,6 +219,9 @@ $Red: #FB5D48;
 }
 .icon{
   font-size: 30px !important;
+}
+.book{
+  font-size: 15vw !important;
 }
 .search{
   width: 100vw;
@@ -204,8 +253,9 @@ $Red: #FB5D48;
 }
 .cover{
   margin: 20px;
+  padding: 0px;
   height: 150px;
-  width: 90px;
+  width: 100px;
   border-radius: 15px;
   }
   .coverImage{
@@ -213,8 +263,15 @@ $Red: #FB5D48;
     width: 100%;
     border-radius: 10px;
   }
-  .coverTitle{
+  .coverImageWrapper:hover .viewMore {
     display: none;
+}
+  .addToCart{
+    bottom: -20px;
+    right: -20px;
+    height:50px;
+    width: 50px;
+    font-size: 8vw;
   }
 }
 
@@ -266,8 +323,9 @@ $Red: #FB5D48;
 }
 .cover{
   margin: 20px;
+  padding: 0px;
   height: 150px;
-  width: 90px;
+  width: 100px;
   border-radius: 15px;
   }
   .coverImage{
@@ -275,8 +333,15 @@ $Red: #FB5D48;
     width: 100%;
     border-radius: 10px;
   }
-  .coverTitle{
+  .coverImageWrapper:hover .viewMore {
     display: none;
+}
+  .addToCart{
+    bottom: -20px;
+    right: -20px;
+    height:50px;
+    width: 50px;
+    font-size: 4vw;
   }
 }
 
@@ -285,18 +350,38 @@ $Red: #FB5D48;
     width: 100vw;
     height: 10vh;
   }
+  .nav{
+    width: 5vw;
+    height: 70vh;
+  }
+  .wordLogo{
+    top: 47px;
+    font-size: 1.1vw;
+  }
   .coverWrapper{
     height: 85vh;
   }
+  .cover{
+    padding: 0px;
+    }
+  .coverImageWrapper:hover .viewMore {
+    display: none;
+}
+  .addToCart{
+    height:40px;
+    width: 40px;
+    font-size: 3vw;
+  }
+
 }
 
 @include for-tablet-portrait-up{
   .book{
-    font-size: 110px !important;
+    font-size: 15vw !important;
   }
   .wordLogo{
-    font-size: 15px;
-    top: 50px;
+    font-size: 2vw;
+    top: 70px;
   }
 .nav{
   left: 10px;
@@ -342,6 +427,7 @@ $Red: #FB5D48;
 }
 .cover{
   margin: 20px;
+  padding: 0px;
   height: 150px;
   width: 90px;
   border-radius: 15px;
@@ -351,8 +437,15 @@ $Red: #FB5D48;
     width: 100%;
     border-radius: 10px;
   }
-  .coverTitle{
+  .coverImageWrapper:hover .viewMore {
     display: none;
+}
+  .addToCart{
+    bottom: -20px;
+    right: -20px;
+    height:50px;
+    width: 50px;
+    font-size: 4vw;
   }
 
 }
@@ -361,13 +454,9 @@ $Red: #FB5D48;
   .logo{
       margin: 15px;
     }
-    .book{
-      font-size: 130px !important;
-    }
     .wordLogo{
-      top: 70px;
-      font-weight: 900;
-      font-size: 18px;
+      top: 90px;
+      font-size: 1.2vw;
     }
     .navIcon{
       padding-top: 40px;
@@ -380,7 +469,7 @@ $Red: #FB5D48;
     .nav{
       left: 10px;
       width: 5vw;
-      height: 90vh;
+      height: 80vh;
     }
     .content{
       width: 85vw;
@@ -426,23 +515,34 @@ $Red: #FB5D48;
     }
     .cover{
     margin: 20px;
+    padding: 0px;
     height: 300px;
     width: 180px;
     border-radius: 20px;
     }
     .coverImage{
-      height: 250px;
+      height: 300px;
       width: 100%;
       border-radius: 20px;
     }
-    .coverTitle{
-      height: 30px;
-      font-size: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: white;
+    .addToCart{
+      bottom: -20px;
+      right: -20px;
+      height:60px;
+      width: 60px;
+      font-size: 2vw;
     }
+    .coverImageWrapper:hover .viewMore {
+      display: flex;
+  }
+    .viewMore{
+      border-radius: 20px;
+      &:hover{
+        height: 300px;
+        width: 180px;
+      }
+    }
+
 
 
     /* styles for cart */

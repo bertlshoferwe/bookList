@@ -16,9 +16,18 @@ class BookCover extends Component {
           data
             .filter(d => (d.title.toLowerCase()).includes(query.toLowerCase()))
             .map(filteredData => (
-              <div key={ filteredData.id } className='cover' onClick={ () => { addToCart(filteredData); } }>
-                <img className='coverImage' src={ filteredData.img } alt={ filteredData.title } />
-                <p className='coverTitle '>{ filteredData.title }</p>
+              <div key={ filteredData.id } className='cover' >
+                <div className='coverImageWrapper'>
+                  <img className='coverImage' src={ filteredData.img } alt={ filteredData.title } onClick={ () => {} } />
+                  <div className='viewMore'>View More</div>
+                </div>
+                <div className='Buttons'>
+                  <div
+                    className='addToCart material-icons'
+                    onClick={ () => { addToCart(filteredData); } }>
+                    add_shopping_cart
+                  </div>
+                </div>
               </div>
             ))
         }
